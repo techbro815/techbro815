@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1200" height="220" viewBox="0 0 1200 220" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <linearGradient id="g1" x1="0" x2="1">
+      <stop offset="0" stop-color="#00E5FF"/>
+      <stop offset="1" stop-color="#FF39FF"/>
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <style type="text/css"><![CDATA[
+      .card { fill:#0D1117; stroke: rgba(255,255,255,0.06); stroke-width:1; rx:12; }
+      .label { font: 14px 'Segoe UI', Roboto, system-ui, sans-serif; fill: #ADB4C0; }
+      .value { font: 36px 'Segoe UI', Roboto, system-ui, sans-serif; fill: url(#g1); font-weight:700; }
+      .small { font:12px 'Segoe UI', system-ui, sans-serif; fill:#8A94A0; }
+      .title { font: 16px 'Segoe UI', system-ui, sans-serif; fill:#00E5FF; font-weight:700; }
+    ]]></style>
+  </defs>
+
+  <!-- background -->
+  <rect x="8" y="8" width="1184" height="204" class="card"/>
+
+  <!-- section title -->
+  <g transform="translate(24,24)">
+    <text class="title">Sujal Thakur's GitHub Stats</text>
+  </g>
+
+  <!-- left details block -->
+  <g transform="translate(24,56)">
+    <text class="label" x="0" y="0">⭐ Total Stars Earned:</text>
+    <text class="value" x="220" y="0">0</text>
+
+    <text class="label" x="0" y="36">⟳ Total Commits:</text>
+    <text class="value" x="220" y="36">300</text>
+
+    <text class="label" x="0" y="72">🔀 Total PRs:</text>
+    <text class="value" x="220" y="72">8</text>
+
+    <text class="label" x="0" y="108">⚠️ Total Issues:</text>
+    <text class="value" x="220" y="108">1</text>
+
+    <text class="label" x="0" y="144">🧭 Contributed to (last year):</text>
+    <text class="value" x="220" y="144">4</text>
+  </g>
+
+  <!-- middle big stat + animated ring -->
+  <g transform="translate(500,24)">
+    <text class="small" x="0" y="22" fill="#00E5FF">Total Contributions</text>
+    <text class="value" x="0" y="66">300</text>
+    <text class="small" x="0" y="90">Feb 24, 2024 — Present</text>
+
+    <g transform="translate(280,64)">
+      <circle r="36" fill="none" stroke="#1b1f2a" stroke-width="8"/>
+      <circle r="36" fill="none" stroke="url(#g1)" stroke-width="6" stroke-dasharray="226" stroke-dashoffset="226">
+        <animate attributeName="stroke-dashoffset" from="226" to="40" dur="2.2s" repeatCount="indefinite" />
+      </circle>
+      <text x="-8" y="8" class="value">8</text>
+    </g>
+    <text class="small" x="280" y="110" text-anchor="middle" fill="#FF39FF">Current Streak</text>
+    <text class="small" x="280" y="128" fill="#8A94A0" text-anchor="middle">Sep 27 — Oct 4</text>
+  </g>
+
+  <!-- right stat -->
+  <g transform="translate(900,50)">
+    <text class="small" x="0" y="18" fill="#00E5FF">Longest Streak</text>
+    <text class="value" x="0" y="64">8</text>
+    <text class="small" x="0" y="88" fill="#8A94A0">Sep 27 — Oct 4</text>
+  </g>
+
+  <!-- pulsing octocat chip -->
+  <g transform="translate(420,24)">
+    <circle cx="0" cy="0" r="18" fill="#12161d" />
+    <text x="-10" y="6" font-size="18" fill="#0D1117" font-weight="700">🐙</text>
+    <circle cx="0" cy="0" r="20" stroke="url(#g1)" stroke-width="2" fill="none" filter="url(#glow)">
+      <animate attributeName="r" values="18;22;18" dur="2.4s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.4;1;0.4" dur="2.4s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+</svg>
