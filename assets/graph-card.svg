@@ -13,23 +13,22 @@
       .bg { fill:#0D1117; }
       .grid { stroke:#113238; stroke-width:1; stroke-dasharray:6 8; }
       .axis { fill:#00E5FF; font: 13px 'Segoe UI', system-ui, sans-serif; }
-      .line { fill:none; stroke:url(#lg); stroke-width:4; stroke-linecap:round; stroke-linejoin:round; filter:url(#blur); }
       .title { font:20px 'Segoe UI', system-ui, sans-serif; fill:#00E5FF; font-weight:700; text-anchor:middle; }
+      .lineGlow { fill:none; stroke:#00E5FF; stroke-width:8; opacity:.16; stroke-linecap:round; stroke-linejoin:round; }
+      .lineMain { fill:none; stroke:#FF39FF; stroke-width:3.6; stroke-linecap:round; stroke-linejoin:round; filter:url(#blur); }
+      .dash { fill:none; stroke:#FF39FF; stroke-width:1.6; stroke-dasharray:10 8; }
       .dot { fill:#00E5FF; stroke:#0D1117; stroke-width:2; }
     ]]></style>
   </defs>
 
   <rect x="8" y="8" width="1184" height="404" rx="12" class="bg"/>
-
-  <!-- Title -->
   <text x="600" y="40" class="title">Sujal Thakur’s Contribution Graph</text>
 
-  <!-- Plot area -->
   <g transform="translate(60,80)">
     <!-- grid -->
     <g class="grid">
-      <line x1="0" y1="0" x2="1040" y2="0"/>
-      <line x1="0" y1="50" x2="1040" y2="50"/>
+      <line x1="0" y1="0"   x2="1040" y2="0"/>
+      <line x1="0" y1="50"  x2="1040" y2="50"/>
       <line x1="0" y1="100" x2="1040" y2="100"/>
       <line x1="0" y1="150" x2="1040" y2="150"/>
       <line x1="0" y1="200" x2="1040" y2="200"/>
@@ -38,46 +37,74 @@
     </g>
 
     <!-- y-axis labels -->
-    <text x="-36" y="12" class="axis">12</text>
-    <text x="-36" y="62" class="axis">10</text>
+    <text x="-36" y="12"  class="axis">12</text>
+    <text x="-36" y="62"  class="axis">10</text>
     <text x="-36" y="112" class="axis">8</text>
     <text x="-36" y="162" class="axis">6</text>
     <text x="-36" y="212" class="axis">4</text>
     <text x="-36" y="262" class="axis">2</text>
     <text x="-36" y="312" class="axis">0</text>
 
-    <!-- hard-coded “active” line (crafted to look like your screenshot) -->
-    <path d="M 20 280 L 80 250 L 140 288 L 200 250 L 260 288 L 320 260 L 380 288 L 440 288 L 500 260 L 560 260 L 620 256 L 680 258 L 740 240 L 800 220 L 860 240 L 920 200 L 980 260 L 1040 40" class="line"/>
+    <!-- Up–down rhythm + big final spike -->
+    <!-- points (x every ~60px), y lower = higher value -->
+    <!-- coords: (20,286) -> (80,268) -> (140,286) -> ... -> (1040,44) -->
+    <path d="M 20 286
+             L 80 268  L 140 286  L 200 266  L 260 284
+             L 320 264  L 380 282  L 440 262  L 500 280
+             L 560 260  L 620 278  L 680 258  L 740 276
+             L 800 256  L 860 274  L 920 254  L 980 272
+             L 1040 44" class="lineGlow"/>
+    <path d="M 20 286
+             L 80 268  L 140 286  L 200 266  L 260 284
+             L 320 264  L 380 282  L 440 262  L 500 280
+             L 560 260  L 620 278  L 680 258  L 740 276
+             L 800 256  L 860 274  L 920 254  L 980 272
+             L 1040 44" class="lineMain"/>
 
-    <!-- extra neon halo -->
-    <path d="M 20 280 L 80 250 L 140 288 L 200 250 L 260 288 L 320 260 L 380 288 L 440 288 L 500 260 L 560 260 L 620 256 L 680 258 L 740 240 L 800 220 L 860 240 L 920 200 L 980 260 L 1040 40"
-          stroke="url(#lg)" stroke-width="10" opacity="0.12" fill="none" stroke-linecap="round"/>
-
-    <!-- animated moving dash overlay -->
-    <path d="M 20 280 L 80 250 L 140 288 L 200 250 L 260 288 L 320 260 L 380 288 L 440 288 L 500 260 L 560 260 L 620 256 L 680 258 L 740 240 L 800 220 L 860 240 L 920 200 L 980 260 L 1040 40"
-          stroke="#FF39FF" stroke-width="1.6" fill="none" stroke-dasharray="10 8">
+    <!-- animated dash overlay -->
+    <path d="M 20 286
+             L 80 268  L 140 286  L 200 266  L 260 284
+             L 320 264  L 380 282  L 440 262  L 500 280
+             L 560 260  L 620 278  L 680 258  L 740 276
+             L 800 256  L 860 274  L 920 254  L 980 272
+             L 1040 44" class="dash">
       <animate attributeName="stroke-dashoffset" from="0" to="-360" dur="3.4s" repeatCount="indefinite"/>
-      <animate attributeName="opacity" values="0.0;0.6;0.0" dur="3.4s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.0;0.7;0.0" dur="3.4s" repeatCount="indefinite"/>
     </path>
 
-    <!-- animated points -->
+    <!-- dots with pulse -->
     <g>
-      <circle class="dot" cx="20" cy="280" r="6"><animate attributeName="r" values="6;9;6" dur="2.6s" repeatCount="indefinite"/></circle>
-      <circle class="dot" cx="140" cy="288" r="5"><animate attributeName="r" values="5;8;5" dur="2.8s" begin="0.2s" repeatCount="indefinite"/></circle>
-      <circle class="dot" cx="260" cy="288" r="5"><animate attributeName="r" values="5;8;5" dur="2.8s" begin="0.4s" repeatCount="indefinite"/></circle>
-      <circle class="dot" cx="380" cy="288" r="4"/>
-      <circle class="dot" cx="740" cy="240" r="6"><animate attributeName="r" values="6;10;6" dur="3s" begin="0.1s" repeatCount="indefinite"/></circle>
-      <circle class="dot" cx="980" cy="260" r="7"><animate attributeName="r" values="7;11;7" dur="2s" begin="0.1s" repeatCount="indefinite"/></circle>
-      <circle class="dot" cx="1040" cy="40" r="8"><animate attributeName="r" values="8;12;8" dur="1.6s" begin="0.2s" repeatCount="indefinite"/></circle>
+      <circle class="dot" cx="20"  cy="286" r="6"><animate attributeName="r" values="6;9;6"  dur="2.6s" repeatCount="indefinite"/></circle>
+      <circle class="dot" cx="80"  cy="268" r="5"><animate attributeName="r" values="5;8;5"  dur="2.8s" begin="0.1s" repeatCount="indefinite"/></circle>
+      <circle class="dot" cx="140" cy="286" r="5"/>
+
+      <circle class="dot" cx="200" cy="266" r="5"/>
+      <circle class="dot" cx="260" cy="284" r="5"/>
+      <circle class="dot" cx="320" cy="264" r="5"/>
+      <circle class="dot" cx="380" cy="282" r="5"/>
+      <circle class="dot" cx="440" cy="262" r="5"/>
+      <circle class="dot" cx="500" cy="280" r="5"/>
+      <circle class="dot" cx="560" cy="260" r="6"><animate attributeName="r" values="6;9;6"  dur="2.2s" begin="0.2s" repeatCount="indefinite"/></circle>
+      <circle class="dot" cx="620" cy="278" r="5"/>
+      <circle class="dot" cx="680" cy="258" r="6"><animate attributeName="r" values="6;10;6" dur="3s"  begin="0.3s" repeatCount="indefinite"/></circle>
+      <circle class="dot" cx="740" cy="276" r="5"/>
+      <circle class="dot" cx="800" cy="256" r="5"/>
+      <circle class="dot" cx="860" cy="274" r="5"/>
+      <circle class="dot" cx="920" cy="254" r="5"/>
+      <circle class="dot" cx="980" cy="272" r="6"/>
+      <!-- final spike -->
+      <circle class="dot" cx="1040" cy="44" r="8">
+        <animate attributeName="r" values="8;12;8" dur="1.6s" begin="0.2s" repeatCount="indefinite"/>
+      </circle>
     </g>
 
     <!-- x-axis labels -->
     <g font-size="12" fill="#00E5FF" transform="translate(0,320)">
-      <text x="20" y="24">4</text><text x="80" y="24">5</text><text x="140" y="24">6</text><text x="200" y="24">7</text>
-      <text x="260" y="24">8</text><text x="320" y="24">9</text><text x="380" y="24">10</text><text x="440" y="24">11</text>
-      <text x="500" y="24">12</text><text x="560" y="24">13</text><text x="620" y="24">14</text><text x="680" y="24">15</text>
-      <text x="740" y="24">16</text><text x="800" y="24">17</text><text x="860" y="24">18</text><text x="920" y="24">19</text>
-      <text x="980" y="24">20</text><text x="1040" y="24">21</text>
+      <text x="20"  y="24">4</text><text x="80"  y="24">6</text><text x="140" y="24">8</text><text x="200" y="24">10</text>
+      <text x="260" y="24">12</text><text x="320" y="24">14</text><text x="380" y="24">16</text><text x="440" y="24">18</text>
+      <text x="500" y="24">20</text><text x="560" y="24">22</text><text x="620" y="24">24</text><text x="680" y="24">26</text>
+      <text x="740" y="24">28</text><text x="800" y="24">30</text><text x="860" y="24">1</text><text x="920" y="24">2</text>
+      <text x="980" y="24">3</text><text x="1040" y="24">4</text>
     </g>
   </g>
 </svg>
