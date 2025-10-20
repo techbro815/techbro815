@@ -73,7 +73,7 @@
 
 ---
 
-## ⚡ GitHub Metrics (Neon Glow — Static SVGs)
+## ⚡ GitHub Metrics 
 <p align="center">
   <img src="./assets/stats-card.svg" alt="Sujal Thakur Stats Card" />
 </p>
