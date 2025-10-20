@@ -7,12 +7,6 @@
   <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/tarikul-islam-anik/main/assets/images/Waving%20Hand%20Medium-Light%20Skin%20Tone.png" width="80" alt="wave" />
 </h1>
 
-<p align="center">
-  <em>“Totally confused about life, but never about code (big lie).<br/>
-  My tech stack? Changes with every hackathon, competition, or company.<br/>
-  Still waiting for Git to accept <code>git push --force life</code>.”</em>
-</p>
-
 <!-- Pixel Cyber Banner -->
 <p align="center">
   <img width="100%" alt="Sujal Thakur Cyber Banner" src="https://github.com/user-attachments/assets/01130f05-62c0-4a08-b50a-3767bb9a37de" />
